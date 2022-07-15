@@ -45,23 +45,23 @@ const MultiSelectDropdown = ({ options, type }) => {
 
   const renderList = (option, index, isSelected) => {
       return type === 'multi' ?
-        <li className={`${type}-select-dropdown-option`} key={index}>
-            <input type='checkbox' defaultChecked={isSelected /*|| selectAll*/} onClick={(e) => toggleSelected(e, {option})} className='multi-select-dropdown-option_checkbox'></input>
+        <li className={`${type}-select-dropdown_item`} key={index}>
+            <input type='checkbox' defaultChecked={isSelected /*|| selectAll*/} onClick={(e) => toggleSelected(e, {option})} className='multi-select-dropdown_checkbox'></input>
             <span>{option.title}</span>
         </li> : 
-        <li className={`${type}-select-dropdown-option`} onClick={(e) => toggleSelected(e, {option})} key={index}>
+        <li className={`${type}-select-dropdown_item`} onClick={(e) => toggleSelected(e, {option})} key={index}>
             <div>{option.title}</div>
         </li>
   }
 
   return (
       <div className={`${type}-select-dropdown}`}>
-          <div className={`${type}-select-dropdown-selected`}>
+          <div className={`${type}-select-dropdown_selected`}>
               {/* {type === 'multi' && <input type='checkbox' defaultChecked={selectAll} onClick={() => toggleSelectAll()} className='multi-select-dropdown-option_checkbox'></input>} */}
-              {selected && selected.map((title, key) => <span key={key}>{title}</span>)}
+              <div className={`${type}-select-list`}>{selected && selected.map((title, key) => <span key={key}>{title}</span>)}</div>
               <div className={`${type}-select-show`}><button className={`${type}-select-show-btn`} onClick={() => toggleDropDown()}></button></div>
           </div>
-          {(showDropDownList /*|| selectAll*/) && <ul className={`${type}-select-dropdown-options`}>
+          {(showDropDownList /*|| selectAll*/) && <ul className={`${type}-select-dropdown_items`}>
               {options.map((option, index)=> {
                   const isSelected = selected.includes(option.title) /*|| selectAll*/;
                   return (

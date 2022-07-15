@@ -5,11 +5,14 @@ import MultiSelectDropdown from './MultiSelectDropdown';
 import reportWebVitals from './reportWebVitals';
 
 const data = [
-  { id: 1, title: 'option 1' },
-  { id: 2, title: 'option 2' },
-  { id: 3, title: 'option 3' },
-  { id: 4, title: 'option 4' },
-  { id: 5, title: 'option 5' }
+  { id: 1, title: 'Siddarth Patel' },
+  { id: 2, title: 'Sanchay Javeria'},
+  { id: 3, title: 'Mike Sadler' },
+  { id: 4, title: 'Ankit Tibrewal' },
+  { id: 5, title: 'Zach Kayyali' },
+  { id: 6, title: 'Sho Weimer' },
+  { id: 7, title: 'Mikela Dockery' },
+  { id: 8, title: 'Stephanny Cocco' },
 ]
 
 
