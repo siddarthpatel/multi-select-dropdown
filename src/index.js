@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import MultiSelectDropdown from './MultiSelectDropdown';
 import reportWebVitals from './reportWebVitals';
+
+const data = [
+  { id: 1, title: 'option 1' },
+  { id: 2, title: 'option 2' },
+  { id: 3, title: 'option 3' },
+  { id: 4, title: 'option 4' },
+  { id: 5, title: 'option 5' }
+]
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <MultiSelectDropdown options={data} type='multi' />
   </React.StrictMode>
 );
 
