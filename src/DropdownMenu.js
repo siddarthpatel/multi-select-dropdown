@@ -1,66 +1,70 @@
 import React, { useState } from 'react';
 import expand from './expand.png'
 import collapse from './collapse.png'
+import { TYPES } from './Constansts';
 import './dropdown.css';
 
 const DropdownMenu = ({ options, type }) => {
 
-  const [selected, setSelected] = useState([])
-  const [selectAll, setSelectAll] = useState(false)
+  const [selectedOptions, setSelected] = useState(type === TYPES.MULTI ? options : [])
+  let [selectAll, setSelectAll] = useState(false)
   const [showDropDownList, setShowDropDown] = useState(false)
 
-  const toggleSelected = (e, { option }) => {
-      type === 'multi' ? setSelected(prevSelected => {
-          const selectedOptions = [...prevSelected]
-          if (selectedOptions.includes(option.label)) {
-              selectedOptions.length === 0 && toggleSelectAll()
-              return selectedOptions.filter(item => item !== option.label)
-          } else {
-              selectedOptions.push(option.label)
-              selectedOptions.length === options.length && toggleSelectAll()
-              return selectedOptions;
-          }
-      }) :
-      setSelected(prevSelected => {
-        const selectedOptions = [...prevSelected]
-        if (selectedOptions.includes(option.label)) {
-            return selectedOptions.filter(item => item !== option.label)
-        } else {
-            selectedOptions[0] = option.label
-            return selectedOptions;
-        }
-    })
-  }
-
-  const toggleSelectAll = (e) => {
-      setSelectAll(!selectAll)
-      setSelected(prevSelected => {
-        let selectedOptions = [...prevSelected]
-        selectAll ? selectedOptions = [] : options.map(option => !selectedOptions.includes(option.label) && selectedOptions.push(option.label))
-        return selectedOptions
-    })
+  const toggleSelected = (e, option=null) => {
+    if (type === TYPES.MULTI) {
+        let label = e.target.name;
+        let selected = e.target.checked;
+        setSelected(prevSelected => {
+            let selectedItems = [...prevSelected]
+            if (label === "selectAll") {
+            selectAll = selected;
+            setSelectAll(selectAll)
+            selectedItems = selectedItems.map(item => ({ ...item, isSelected: selected }))
+            } else {
+            selectedItems = selectedItems.map(item => item.label === label ? { ...item, isSelected: selected } : item)
+            selectAll = selectedItems.every(item => item.isSelected);
+            }
+            setSelectAll(selectAll)
+            return selectedItems
+        })
+    } else {
+        setSelected(prevSelected => {
+            const selectedOptions = [...prevSelected]
+            if (selectedOptions.includes(option.label)) {
+                return selectedOptions.filter(item => item !== option.label)
+            } else {
+                selectedOptions[0] = option.label
+                return selectedOptions;
+            }
+        })
+    }
   }
 
   const toggleDropDown = () => {
       setShowDropDown(!showDropDownList)
   }
 
-  const renderList = (option, index, isSelected) => {
-      return type === 'multi' ?
+  const renderList = (option, index) => {
+      return type === TYPES.MULTI ?
         <li className={`${type}-select-dropdown_item`} key={index}>
-            <input type='checkbox' defaultChecked={isSelected} onClick={(e) => toggleSelected(e, {option})} className='multi-select-dropdown_checkbox'></input>
+            <input type='checkbox' className='multi-select-dropdown_checkbox' name={option.label} value={option.label} checked={option.isSelected || false} onChange={(e) => toggleSelected(e)}></input>
             <span>{option.label}</span>
         </li> : 
-        <li className={`${type}-select-dropdown_item`} onClick={(e) => toggleSelected(e, {option})} key={index}>
+        <li className={`${type}-select-dropdown_item`} name={option.label} value={option.label} key={index} onClick={(e) => toggleSelected(e, option)}>
             <div>{option.label}</div>
         </li>
   }
 
+
   return (
       <div className={`${type}-select-dropdown}`}>
           <div className={showDropDownList ? `${type}-select-dropdown_selected` : `${type}-select-dropdown_select`}>
-              <div className={`${type}-select-list`}>{selected && selected.map((label, key) => {
-                return selected.length > 1 ? <span key={key}>{label}, </span> : <span key={key}>{label}</span>
+              <div className={`${type}-select-list`}>{selectedOptions && selectedOptions.map((option, key) => {
+                if (!option.isSelected && type === TYPES.MULTI)
+                    return <span></span>
+                if (type === TYPES.SINGLE)
+                    return <span key={key}>{option}</span>
+                return selectedOptions.length > 1 ? <span key={key}>{option.label}, </span> : <span key={key}>{option.label}</span>
                })}
               </div>
               <div className={`${type}-select-show`}>
@@ -70,22 +74,19 @@ const DropdownMenu = ({ options, type }) => {
               </div>
           </div>
           {(showDropDownList) && <ul className={`${type}-select-dropdown_items`}>
-              {type === 'multi' && 
-                <li className={`${type}-select-dropdown_item`}>
-                    <input type='checkbox' defaultChecked={selectAll} onClick={() => toggleSelectAll()} className='multi-select-dropdown_checkbox'></input>
+              {type === TYPES.MULTI && 
+                <li className={`${type}-select-dropdown_item`} key={101}>
+                    <input type='checkbox' name='selectAll' key='selectAll' className='multi-select-dropdown_checkbox' checked={selectAll}  onChange={(e) => toggleSelected(e)}></input>
                     <span>Select all</span>
                 </li>}
-              {selectAll && options.map((option, index)=> {
-                  const isSelected = selectAll;
+              { type === TYPES.MULTI ? selectedOptions.map((option, index)=> {
                   return (
-                    renderList(option, index, isSelected)
+                    renderList(option, index)
                   )
-              })}
-              {!selectAll && options.map((option, index)=> {
-                  const isSelected = selected.includes(option.label);
-                  return (
-                    renderList(option, index, isSelected)
-                  )
+                }) : options.map((option, index)=> {
+                return (
+                  renderList(option, index)
+                )
               })}
           </ul>}
       </div>

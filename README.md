@@ -31,11 +31,11 @@ DropDownMenu takes two props options and type. Options is the dropdown options l
 Example of options prop:
 ```
 const data = [
-  { id: 0, label: 'Siddarth Patel' },
-  { id: 1, label: 'Zach Kayyali' },
-  { id: 2, label: 'Sho Weimer' },
-  { id: 3, label: 'Mikela Dockery' },
-  { id: 4, label: 'Stephanny Cocconcelli' },
+  { label: 'Siddarth Patel' },
+  { label: 'Zach Kayyali' },
+  { label: 'Sho Weimer' },
+  { label: 'Mikela Dockery' },
+  { label: 'Stephanny Cocconcelli' },
 ]
 
 ```
