@@ -19,7 +19,11 @@ const data = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DropdownMenu options={data} type='multi' />
+    <h2>Multi select dropdown menu.</h2>
+    <DropdownMenu options={data} type='multi'/>
+    <div style={{marginTop : '250px'}}></div>
+    <h2>Single select dropdown menu.</h2>
+    <DropdownMenu options={data} type='single' />
   </React.StrictMode>
 );
 
