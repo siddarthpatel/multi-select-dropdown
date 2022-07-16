@@ -60,7 +60,10 @@ const DropdownMenu = ({ options, type }) => {
       <div className={`${type}-select-dropdown}`}>
           <div className={showDropDownList ? `${type}-select-dropdown_selected` : `${type}-select-dropdown_select`}>
               {/* {type === 'multi' && <input type='checkbox' defaultChecked={selectAll} onClick={() => toggleSelectAll()} className='multi-select-dropdown-option_checkbox'></input>} */}
-              <div className={`${type}-select-list`}>{selected && selected.map((title, key) => <span key={key}>{title}</span>)}</div>
+              <div className={`${type}-select-list`}>{selected && selected.map((title, key) => {
+                return selected.length > 1 ? <span key={key}>{title}, </span> : <span key={key}>{title}</span>
+               })}
+              </div>
               <div className={`${type}-select-show`}>
                   <button className={`${type}-select-show-btn`} onClick={() => toggleDropDown()}>
                     { showDropDownList ? <img src={collapse} alt="Collapse dropdown" /> : <img src={expand} alt="Expand dropdown" /> }

@@ -4,8 +4,8 @@
 
 .multi-select-dropdown_selected, .single-select-dropdown_selected {
   width: 300px;
-  height: 50px;
-  font-size:18px;
+  min-height: 50px;
+  font-size:16px;
   border:solid 1px lightblue;
   display:flex;
   justify-content: flex-start;
@@ -15,8 +15,8 @@
 
  .multi-select-dropdown_select, .single-select-dropdown_select {
   width: 300px;
-  height: 50px;
-  font-size:18px;
+  min-height: 50px;
+  font-size:16px;
   border:solid 1px lightgrey;
   display:flex;
   justify-content: flex-start;
@@ -38,7 +38,11 @@
   background-color: none;
   background: none;
   border: none;
-  color: inherit
+  color: inherit;
+ }
+
+ button:hover {
+   cursor: pointer;
  }
 
  .multi-select-dropdown_items, .single-select-dropdown_items {
@@ -59,6 +63,10 @@
 
 .multi-select-dropdown_checkbox {
   margin-right: 10px;
+}
+
+input:hover {
+  cursor: pointer;
 }
 
 ul {
