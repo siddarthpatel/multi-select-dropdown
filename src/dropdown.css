@@ -1,0 +1,91 @@
+.multi-select-dropdown, .single-select-dropdown {
+  position: relative;
+}
+
+.multi-select-dropdown_selected, .single-select-dropdown_selected {
+  width: 300px;
+  min-height: 50px;
+  font-size:16px;
+  border:solid 1px lightblue;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+ }
+
+ .multi-select-dropdown_select, .single-select-dropdown_select {
+  width: 300px;
+  min-height: 50px;
+  font-size:16px;
+  border:solid 1px lightgrey;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+ }
+
+ .multi-select-list, .single-select-list {
+   width: 280px;
+ }
+
+ .multi-select-show, .single-select-show {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+ }
+
+ .multi-select-show-btn, .single-select-show-btn {
+  background-color: none;
+  background: none;
+  border: none;
+  color: inherit;
+ }
+
+ button:hover {
+   cursor: pointer;
+ }
+
+ .multi-select-dropdown_items, .single-select-dropdown_items {
+   width: 300px;
+   padding: 0px;
+   margin-top: 0px;
+   border: 1px solid lightgray;
+   border-top: none;
+} 
+
+.multi-select-dropdown_item, .single-select-dropdown_item {
+  padding: 10px;
+}
+
+.multi-select-dropdown_item_selected, .single-select-dropdown_item_selected {
+  background-color: lightblue;
+}
+
+.single-select-dropdown_item > div{
+  margin-left: 20px;
+}
+
+.multi-select-dropdown_checkbox {
+  margin-right: 10px;
+}
+
+input:hover {
+  cursor: pointer;
+}
+
+ul {
+  position: absolute;
+  list-style: none;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+li {
+  display: block;
+  float: none;
+}
+
+li:hover {
+  background-color: lightblue;
+}

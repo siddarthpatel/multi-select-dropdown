@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import DropdownMenu from './DropdownMenu';
 import reportWebVitals from './reportWebVitals';
+
+const data = [
+  { id: 0, label: 'Siddarth Patel' },
+  { id: 1, label: 'Sanchay Javeria'},
+  { id: 2, label: 'Mike Sadler' },
+  { id: 3, label: 'Ankit Tibrewal' },
+  { id: 4, label: 'Zach Kayyali' },
+  { id: 5, label: 'Sho Weimer' },
+  { id: 6, label: 'Mikela Dockery' },
+  { id: 7, label: 'Stephanny Cocconcelli' },
+]
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <DropdownMenu options={data} type='multi' />
   </React.StrictMode>
 );
 
