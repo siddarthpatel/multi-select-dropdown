@@ -10,10 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <h2>Multi select dropdown menu.</h2>
-    <DropdownMenu options={DATA} type={TYPES.MULTI}/>
+    <DropdownMenu options={DATA} type={TYPES.MULTI} />
     <div style={{marginTop : '250px'}}></div>
     <h2>Single select dropdown menu.</h2>
-    <DropdownMenu options={DATA} type={TYPES.SINGLE}/>
+    <DropdownMenu options={DATA} type={TYPES.SINGLE} />
   </React.StrictMode>
 );
 

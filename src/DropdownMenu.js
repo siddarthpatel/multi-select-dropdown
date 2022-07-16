@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import expand from './expand.png'
 import collapse from './collapse.png'
 import { TYPES } from './Constansts';
+import PropTypes from 'prop-types';
 import './dropdown.css';
 
-const DropdownMenu = ({ options, type }) => {
+const DropdownMenu = ({ options, type, onSelected }) => {
 
   const [selectedOptions, setSelected] = useState(type === TYPES.MULTI ? options : [])
   let [selectAll, setSelectAll] = useState(false)
@@ -25,15 +26,19 @@ const DropdownMenu = ({ options, type }) => {
             selectAll = selectedItems.every(item => item.isSelected);
             }
             setSelectAll(selectAll)
+            onSelected && onSelected(selectedItems)
             return selectedItems
         })
     } else {
         setSelected(prevSelected => {
             const selectedItems = [...prevSelected]
             if (selectedItems.includes(option.label)) {
-                return selectedItems.filter(item => item !== option.label)
+                let filteredItems = selectedItems.filter(item => item !== option.label)
+                onSelected && onSelected(filteredItems)
+                return filteredItems
             } else {
                 selectedItems[0] = option.label
+                onSelected && onSelected(selectedItems)
                 return selectedItems;
             }
         })
@@ -91,6 +96,10 @@ const DropdownMenu = ({ options, type }) => {
           </ul>}
       </div>
   )
+}
+
+DropdownMenu.propTypes = {
+    onSelected: PropTypes.func,
 }
 
 export default DropdownMenu;
