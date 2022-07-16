@@ -6,6 +6,17 @@
   width: 300px;
   height: 50px;
   font-size:18px;
+  border:solid 1px lightblue;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+ }
+
+ .multi-select-dropdown_select, .single-select-dropdown_select {
+  width: 300px;
+  height: 50px;
+  font-size:18px;
   border:solid 1px lightgrey;
   display:flex;
   justify-content: flex-start;
@@ -21,6 +32,13 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+ }
+
+ .multi-select-show-btn, .single-select-show-btn {
+  background-color: none;
+  background: none;
+  border: none;
+  color: inherit
  }
 
  .multi-select-dropdown_items, .single-select-dropdown_items {
@@ -44,10 +62,16 @@
 }
 
 ul {
+  position: absolute;
   list-style: none;
   height: 200px;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+li {
+  display: block;
+  float: none;
 }
 
 li:hover {

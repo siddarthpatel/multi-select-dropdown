@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import MultiSelectDropdown from './MultiSelectDropdown';
+import DropdownMenu from './DropdownMenu';
 import reportWebVitals from './reportWebVitals';
 
 const data = [
@@ -19,7 +19,7 @@ const data = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MultiSelectDropdown options={data} type='multi' />
+    <DropdownMenu options={data} type='multi' />
   </React.StrictMode>
 );
 

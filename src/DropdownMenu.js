@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import './App.css';
+import expand from './expand.png'
+import collapse from './collapse.png'
+import './dropdown.css';
 
-const MultiSelectDropdown = ({ options, type }) => {
+const DropdownMenu = ({ options, type }) => {
 
   const [selected, setSelected] = useState([])
 //   const [selectAll, setSelectAll] = useState(false)
@@ -56,10 +58,14 @@ const MultiSelectDropdown = ({ options, type }) => {
 
   return (
       <div className={`${type}-select-dropdown}`}>
-          <div className={`${type}-select-dropdown_selected`}>
+          <div className={showDropDownList ? `${type}-select-dropdown_selected` : `${type}-select-dropdown_select`}>
               {/* {type === 'multi' && <input type='checkbox' defaultChecked={selectAll} onClick={() => toggleSelectAll()} className='multi-select-dropdown-option_checkbox'></input>} */}
               <div className={`${type}-select-list`}>{selected && selected.map((title, key) => <span key={key}>{title}</span>)}</div>
-              <div className={`${type}-select-show`}><button className={`${type}-select-show-btn`} onClick={() => toggleDropDown()}></button></div>
+              <div className={`${type}-select-show`}>
+                  <button className={`${type}-select-show-btn`} onClick={() => toggleDropDown()}>
+                    { showDropDownList ? <img src={collapse} alt="Collapse dropdown" /> : <img src={expand} alt="Expand dropdown" /> }
+                  </button>
+              </div>
           </div>
           {(showDropDownList /*|| selectAll*/) && <ul className={`${type}-select-dropdown_items`}>
               {options.map((option, index)=> {
@@ -73,4 +79,4 @@ const MultiSelectDropdown = ({ options, type }) => {
   )
 }
 
-export default MultiSelectDropdown;
+export default DropdownMenu;

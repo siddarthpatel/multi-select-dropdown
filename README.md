@@ -1,5 +1,5 @@
-# Multi Select Dropdown App
-A simple multi select dropdown app.
+# Multi Select Dropdown Menu App
+A simple dropdown app menu app which supports a single selected option and multiple selected option.
 
 ---
 # Quick Start
