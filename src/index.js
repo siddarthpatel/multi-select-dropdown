@@ -12,7 +12,7 @@ const data = [
   { id: 4, label: 'Zach Kayyali' },
   { id: 5, label: 'Sho Weimer' },
   { id: 6, label: 'Mikela Dockery' },
-  { id: 7, label: 'Stephanny Cocco' },
+  { id: 7, label: 'Stephanny Cocconcelli' },
 ]
 
 

@@ -57,6 +57,10 @@
   padding: 10px;
 }
 
+.multi-select-dropdown_item_selected, .single-select-dropdown_item_selected {
+  background-color: lightblue;
+}
+
 .single-select-dropdown_item > div{
   margin-left: 20px;
 }
