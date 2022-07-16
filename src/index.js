@@ -5,14 +5,14 @@ import DropdownMenu from './DropdownMenu';
 import reportWebVitals from './reportWebVitals';
 
 const data = [
-  { id: 1, title: 'Siddarth Patel' },
-  { id: 2, title: 'Sanchay Javeria'},
-  { id: 3, title: 'Mike Sadler' },
-  { id: 4, title: 'Ankit Tibrewal' },
-  { id: 5, title: 'Zach Kayyali' },
-  { id: 6, title: 'Sho Weimer' },
-  { id: 7, title: 'Mikela Dockery' },
-  { id: 8, title: 'Stephanny Cocco' },
+  { id: 0, label: 'Siddarth Patel' },
+  { id: 1, label: 'Sanchay Javeria'},
+  { id: 2, label: 'Mike Sadler' },
+  { id: 3, label: 'Ankit Tibrewal' },
+  { id: 4, label: 'Zach Kayyali' },
+  { id: 5, label: 'Sho Weimer' },
+  { id: 6, label: 'Mikela Dockery' },
+  { id: 7, label: 'Stephanny Cocco' },
 ]
 
 

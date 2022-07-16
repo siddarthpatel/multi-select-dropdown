@@ -12,19 +12,19 @@ const DropdownMenu = ({ options, type }) => {
   const toggleSelected = (e, { option }) => {
       type === 'multi' ? setSelected(prevSelected => {
           const newArray = [...prevSelected]
-          if (newArray.includes(option.title)) {
-              return newArray.filter(item => item !== option.title)
+          if (newArray.includes(option.label)) {
+              return newArray.filter(item => item !== option.label)
           } else {
-              newArray.push(option.title)
+              newArray.push(option.label)
               return newArray;
           }
       }) :
       setSelected(prevSelected => {
         const newArray = [...prevSelected]
-        if (newArray.includes(option.title)) {
-            return newArray.filter(item => item !== option.title)
+        if (newArray.includes(option.label)) {
+            return newArray.filter(item => item !== option.label)
         } else {
-            newArray[0] = option.title
+            newArray[0] = option.label
             return newArray;
         }
     })
@@ -34,12 +34,10 @@ const DropdownMenu = ({ options, type }) => {
 //       setSelectAll(!selectAll)
 //       setSelected(prevSelected => {
 //         let newArray = [...prevSelected]
-//         selectAll ? newArray = [] : options.map(option => newArray.push(option.title))
+//         selectAll ? newArray = [] : options.map(option => newArray.push(option.label))
 //         return newArray
 //     })
 //   }
-
-  console.log(selected)
 
   const toggleDropDown = () => {
       setOpen(!showDropDownList)
@@ -49,10 +47,10 @@ const DropdownMenu = ({ options, type }) => {
       return type === 'multi' ?
         <li className={`${type}-select-dropdown_item`} key={index}>
             <input type='checkbox' defaultChecked={isSelected /*|| selectAll*/} onClick={(e) => toggleSelected(e, {option})} className='multi-select-dropdown_checkbox'></input>
-            <span>{option.title}</span>
+            <span>{option.label}</span>
         </li> : 
         <li className={`${type}-select-dropdown_item`} onClick={(e) => toggleSelected(e, {option})} key={index}>
-            <div>{option.title}</div>
+            <div>{option.label}</div>
         </li>
   }
 
@@ -60,8 +58,8 @@ const DropdownMenu = ({ options, type }) => {
       <div className={`${type}-select-dropdown}`}>
           <div className={showDropDownList ? `${type}-select-dropdown_selected` : `${type}-select-dropdown_select`}>
               {/* {type === 'multi' && <input type='checkbox' defaultChecked={selectAll} onClick={() => toggleSelectAll()} className='multi-select-dropdown-option_checkbox'></input>} */}
-              <div className={`${type}-select-list`}>{selected && selected.map((title, key) => {
-                return selected.length > 1 ? <span key={key}>{title}, </span> : <span key={key}>{title}</span>
+              <div className={`${type}-select-list`}>{selected && selected.map((label, key) => {
+                return selected.length > 1 ? <span key={key}>{label}, </span> : <span key={key}>{label}</span>
                })}
               </div>
               <div className={`${type}-select-show`}>
@@ -72,7 +70,7 @@ const DropdownMenu = ({ options, type }) => {
           </div>
           {(showDropDownList /*|| selectAll*/) && <ul className={`${type}-select-dropdown_items`}>
               {options.map((option, index)=> {
-                  const isSelected = selected.includes(option.title) /*|| selectAll*/;
+                  const isSelected = selected.includes(option.label) /*|| selectAll*/;
                   return (
                     renderList(option, index, isSelected)
                   )
