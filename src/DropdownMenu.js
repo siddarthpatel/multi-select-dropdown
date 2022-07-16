@@ -29,12 +29,12 @@ const DropdownMenu = ({ options, type }) => {
         })
     } else {
         setSelected(prevSelected => {
-            const selectedOptions = [...prevSelected]
-            if (selectedOptions.includes(option.label)) {
-                return selectedOptions.filter(item => item !== option.label)
+            const selectedItems = [...prevSelected]
+            if (selectedItems.includes(option.label)) {
+                return selectedItems.filter(item => item !== option.label)
             } else {
-                selectedOptions[0] = option.label
-                return selectedOptions;
+                selectedItems[0] = option.label
+                return selectedItems;
             }
         })
     }
@@ -75,7 +75,7 @@ const DropdownMenu = ({ options, type }) => {
           </div>
           {(showDropDownList) && <ul className={`${type}-select-dropdown_items`}>
               {type === TYPES.MULTI && 
-                <li className={`${type}-select-dropdown_item`} key={101}>
+                <li className={`${type}-select-dropdown_item`}>
                     <input type='checkbox' name='selectAll' key='selectAll' className='multi-select-dropdown_checkbox' checked={selectAll}  onChange={(e) => toggleSelected(e)}></input>
                     <span>Select all</span>
                 </li>}
