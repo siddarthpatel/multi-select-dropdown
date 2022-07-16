@@ -57,6 +57,10 @@
   padding: 10px;
 }
 
+.single-select-dropdown_item:hover {
+  cursor: pointer;
+}
+
 .multi-select-dropdown_item_selected, .single-select-dropdown_item_selected {
   background-color: lightblue;
 }

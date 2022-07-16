@@ -7,25 +7,27 @@ const DropdownMenu = ({ options, type }) => {
 
   const [selected, setSelected] = useState([])
   const [selectAll, setSelectAll] = useState(false)
-  const [showDropDownList, setOpen] = useState(false)
+  const [showDropDownList, setShowDropDown] = useState(false)
 
   const toggleSelected = (e, { option }) => {
       type === 'multi' ? setSelected(prevSelected => {
-          const newArray = [...prevSelected]
-          if (newArray.includes(option.label)) {
-              return newArray.filter(item => item !== option.label)
+          const selectedOptions = [...prevSelected]
+          if (selectedOptions.includes(option.label)) {
+              selectedOptions.length === 0 && toggleSelectAll()
+              return selectedOptions.filter(item => item !== option.label)
           } else {
-              newArray.push(option.label)
-              return newArray;
+              selectedOptions.push(option.label)
+              selectedOptions.length === options.length && toggleSelectAll()
+              return selectedOptions;
           }
       }) :
       setSelected(prevSelected => {
-        const newArray = [...prevSelected]
-        if (newArray.includes(option.label)) {
-            return newArray.filter(item => item !== option.label)
+        const selectedOptions = [...prevSelected]
+        if (selectedOptions.includes(option.label)) {
+            return selectedOptions.filter(item => item !== option.label)
         } else {
-            newArray[0] = option.label
-            return newArray;
+            selectedOptions[0] = option.label
+            return selectedOptions;
         }
     })
   }
@@ -33,14 +35,14 @@ const DropdownMenu = ({ options, type }) => {
   const toggleSelectAll = (e) => {
       setSelectAll(!selectAll)
       setSelected(prevSelected => {
-        let newArray = [...prevSelected]
-        selectAll ? newArray = [] : options.map(option => newArray.push(option.label))
-        return newArray
+        let selectedOptions = [...prevSelected]
+        selectAll ? selectedOptions = [] : options.map(option => !selectedOptions.includes(option.label) && selectedOptions.push(option.label))
+        return selectedOptions
     })
   }
 
   const toggleDropDown = () => {
-      setOpen(!showDropDownList)
+      setShowDropDown(!showDropDownList)
   }
 
   const renderList = (option, index, isSelected) => {
