@@ -48,16 +48,16 @@ const DropdownMenu = ({ options, type }) => {
       return type === TYPES.MULTI ?
         <li className={`${type}-select-dropdown_item`} key={index}>
             <input type='checkbox' className='multi-select-dropdown_checkbox' name={option.label} value={option.label} checked={option.isSelected || false} onChange={(e) => toggleSelected(e)}></input>
-            <span>{option.label}</span>
+            <label>{option.label}</label>
         </li> : 
         <li className={`${type}-select-dropdown_item`} name={option.label} value={option.label} key={index} onClick={(e) => toggleSelected(e, option)}>
-            <div>{option.label}</div>
+            <label>{option.label}</label>
         </li>
   }
 
 
   return (
-      <div className={`${type}-select-dropdown}`}>
+      <div className={`${type}-select-dropdown`}>
           <div className={showDropDownList ? `${type}-select-dropdown_selected` : `${type}-select-dropdown_select`}>
               <div className={`${type}-select-list`}>{selectedOptions && selectedOptions.map((option, key) => {
                 if (!option.isSelected && type === TYPES.MULTI)
@@ -77,7 +77,7 @@ const DropdownMenu = ({ options, type }) => {
               {type === TYPES.MULTI && 
                 <li className={`${type}-select-dropdown_item`}>
                     <input type='checkbox' name='selectAll' key='selectAll' className='multi-select-dropdown_checkbox' checked={selectAll}  onChange={(e) => toggleSelected(e)}></input>
-                    <span>Select all</span>
+                    <label>Select all</label>
                 </li>}
               { type === TYPES.MULTI ? selectedOptions.map((option, index)=> {
                   return (
