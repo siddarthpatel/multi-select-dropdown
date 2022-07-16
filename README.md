@@ -1,5 +1,5 @@
 # Multi Select Dropdown Menu App
-A simple dropdown app menu app which supports a single selected option and multiple selected option.
+A simple dropdown app menu app which supports a single selected option and multiple selected option type.
 
 ---
 # Quick Start
@@ -25,6 +25,31 @@ npm start
 5. If it doesn't automatically open, navigate in web-browser to http://localhost:3000
 ---
 
+# Usage
+DropDownMenu takes two props options and type. Options is the dropdown options list and type is the type of dropdown (Multiselect or single select). 
+
+Example of options prop:
+```
+const data = [
+  { id: 0, label: 'Siddarth Patel' },
+  { id: 1, label: 'Zach Kayyali' },
+  { id: 2, label: 'Sho Weimer' },
+  { id: 3, label: 'Mikela Dockery' },
+  { id: 4, label: 'Stephanny Cocconcelli' },
+]
+
+```
+
+1. DropDownMenu with multi select
+    ```
+    <DropdownMenu options={data} type='multi' />
+    ```
+2. DropDownMenu with single select
+    ```
+    <DropdownMenu options={data} type='single' />
+    ```
+
+---
 ## Available Scripts
 
 In the project directory, you can run:
@@ -36,11 +61,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
