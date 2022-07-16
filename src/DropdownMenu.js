@@ -46,11 +46,11 @@ const DropdownMenu = ({ options, type }) => {
 
   const renderList = (option, index) => {
       return type === TYPES.MULTI ?
-        <li className={`${type}-select-dropdown_item`} key={index}>
-            <input type='checkbox' className='multi-select-dropdown_checkbox' name={option.label} value={option.label} checked={option.isSelected || false} onChange={(e) => toggleSelected(e)}></input>
+        <li className={option.isSelected ?  `${type}-select-dropdown_item_selected` : `${type}-select-dropdown_item`} key={index}>
+            <input type='checkbox' className={`${type}-select-dropdown_checkbox`} name={option.label} value={option.label} checked={option.isSelected || false} onChange={(e) => toggleSelected(e)}></input>
             <label>{option.label}</label>
         </li> : 
-        <li className={`${type}-select-dropdown_item`} name={option.label} value={option.label} key={index} onClick={(e) => toggleSelected(e, option)}>
+        <li className={selectedOptions && selectedOptions[0] === option.label ? `${type}-select-dropdown_item_selected` : `${type}-select-dropdown_item`} name={option.label} value={option.label} key={index} onClick={(e) => toggleSelected(e, option)}>
             <label>{option.label}</label>
         </li>
   }
@@ -75,7 +75,7 @@ const DropdownMenu = ({ options, type }) => {
           </div>
           {(showDropDownList) && <ul className={`${type}-select-dropdown_items`}>
               {type === TYPES.MULTI && 
-                <li className={`${type}-select-dropdown_item`}>
+                <li className={ selectAll ? `${type}-select-dropdown_item_selected` : `${type}-select-dropdown_item`}>
                     <input type='checkbox' name='selectAll' key='selectAll' className='multi-select-dropdown_checkbox' checked={selectAll}  onChange={(e) => toggleSelected(e)}></input>
                     <label>Select all</label>
                 </li>}

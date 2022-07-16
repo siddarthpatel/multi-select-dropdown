@@ -48,6 +48,11 @@ const data = [
     ```
     <DropdownMenu options={data} type='single' />
     ```
+---
+
+# Testing with different data sets
+While the local server is running, go to Constansts.js and manipulate the DATA object as desired
+
 
 ---
 ## Available Scripts

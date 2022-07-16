@@ -66,16 +66,31 @@
   display: flex;
 }
 
+.single-select-dropdown_item_selected {
+  padding: 10px;
+  display: flex;
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+.multi-select-dropdown_item_selected {
+  padding: 10px;
+  display: flex;
+  background-color: lightblue;
+}
+
 .single-select-dropdown_item:hover {
   cursor: pointer;
 }
 
-.multi-select-dropdown_item_selected, .single-select-dropdown_item_selected {
-  background-color: lightblue;
+.single-select-dropdown_item > label {
+  cursor: pointer;
+  margin-left: 10px;
 }
 
-.single-select-dropdown_item > label{
-  margin-left: 20px;
+.single-select-dropdown_item_selected > label {
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 .multi-select-dropdown_checkbox {
@@ -98,7 +113,7 @@ ul {
 }
 
 li:hover {
-  background-color: lightblue;
+  background-color: lightgrey;
 }
 
 li > label {
