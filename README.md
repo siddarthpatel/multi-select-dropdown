@@ -48,7 +48,7 @@ const data = [
     ```
     <DropdownMenu options={data} type='single' />
     ```
-3. Provide an optional onSelected function prop that return the selectedItems data 
+3. Provide an optional onSelected function prop that returns the selectedItems in dropdown 
     ```
     <DropdownMenu options={DATA} type={TYPES.SINGLE} onSelected={(data) => console.log(data)} />
     ```
