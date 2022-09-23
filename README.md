@@ -1,5 +1,5 @@
 # Multi Select Dropdown Menu App
-A simple dropdown app menu app which supports a single selected option and multiple selected option type.
+A simple dropdown menu app which supports a single select and multiple select option type as a prop.
 
 ---
 # Quick Start
